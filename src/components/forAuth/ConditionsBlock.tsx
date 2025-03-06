@@ -1,6 +1,14 @@
-// import { useEffect, useState } from "react";
+import {JSX} from "react";
 
-export const ConditionsBlock = ({ isLength, isChecked2, isChecked3, hasUppercase }) => {
+interface ICheck {
+    isLength: boolean;
+    isChecked2?: boolean;
+    isChecked3?: boolean;
+    hasUppercase: boolean;
+}
+
+
+export const ConditionsBlock:ICheck = ({ isLength, hasUppercase, hasNumber  }):JSX.Element => {
   // useEffect(() => {
 
   //   setIsChecked1(true)
@@ -23,19 +31,19 @@ export const ConditionsBlock = ({ isLength, isChecked2, isChecked3, hasUppercase
           Uppercase letter
         </label>
       </div>
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
-          disabled
-          checked={isChecked2}
-        />
-        <label className="form-check-label" htmlFor="flexRadioDefault2">
-          Lowercase letter
-        </label>
-      </div>
+      {/*<div className="form-check">*/}
+      {/*  <input*/}
+      {/*    className="form-check-input"*/}
+      {/*    type="checkbox"*/}
+      {/*    name="flexRadioDefault"*/}
+      {/*    id="flexRadioDefault2"*/}
+      {/*    disabled*/}
+      {/*    checked={hasNumber}*/}
+      {/*  />*/}
+      {/*  <label className="form-check-label" htmlFor="flexRadioDefault2">*/}
+      {/*    Lowercase letter*/}
+      {/*  </label>*/}
+      {/*</div>*/}
       <div className="form-check">
         <input
           className="form-check-input"
@@ -43,7 +51,7 @@ export const ConditionsBlock = ({ isLength, isChecked2, isChecked3, hasUppercase
           name="flexRadioDefault"
           id="flexRadioDefault3"
           disabled
-          checked={isChecked3}
+          checked={hasNumber}
         />
         <label className="form-check-label" htmlFor="flexRadioDefault3">
           Number
