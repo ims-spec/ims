@@ -1,8 +1,25 @@
-export const SignIn = () => {
+import React, { useState } from "react";
+import { ChildComponentProps } from "./Auth";
+import { useAuth } from "../store/useAuth";
+
+export const SignIn: React.FC<ChildComponentProps> = ({
+  isLogin,
+  setIsLogin,
+}) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { SignIn } = useAuth();
+
+  const submitSignIn = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    SignIn({ email, password });
+  };
+
   return (
     <div className="d-flex align-items-center py-4 bg-body-tertiary">
-      <main className="form-signin w-25 m-auto shadow-lg p-5" >
-        <form>
+      <main className="form-signin w-25 m-auto shadow-lg p-5">
+        <form onSubmit={submitSignIn}>
           <h1 className="h3 mt-5 mb-3 fw-normal">Please sign in</h1>
 
           <div className="form-floating">
@@ -11,6 +28,7 @@ export const SignIn = () => {
               className="form-control mt-4"
               id="floatingInput"
               placeholder="name@example.com"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label htmlFor="floatingInput">Email address</label>
           </div>
@@ -20,6 +38,7 @@ export const SignIn = () => {
               className="form-control mt-4"
               id="floatingPassword"
               placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <label htmlFor="floatingPassword">Password</label>
           </div>
@@ -40,6 +59,12 @@ export const SignIn = () => {
           </button>
           <p className="mt-5 mb-3 text-body-secondary">© 2025</p>
         </form>
+        <div className="mt-5">
+          <span>Don't have an account?</span>
+          <button className="btn btn-link" onClick={() => setIsLogin(!isLogin)}>
+            Sign Up Now
+          </button>
+        </div>
       </main>
     </div>
   );
