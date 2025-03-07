@@ -14,7 +14,7 @@ export const SignUp: React.FC<ChildComponentProps> = ({
     const [isLength, setIsLength] = useState<boolean>(false);
     const [hasUppercase, setHasUppercase] = useState<boolean>(false);
     const [hasNumber, setHasNumber] = useState<boolean>(false);
-    const {signUp} = useAuth();
+    const {signUpAuth} = useAuth();
 
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export const SignUp: React.FC<ChildComponentProps> = ({
             return setErrorMessage("Пароли не совпадают!");
         }
 
-        signUp({email:email, password:inpPassword})
+        signUpAuth({email:email, password:inpPassword})
 
     };
 

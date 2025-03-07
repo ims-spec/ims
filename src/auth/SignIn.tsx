@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { ChildComponentProps } from "./Auth";
 import { useAuth } from "../store/useAuth";
 
+
 export const SignIn: React.FC<ChildComponentProps> = ({
   isLogin,
   setIsLogin,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { SignIn } = useAuth();
+  const { signInAuth } = useAuth();
 
-  const submitSignIn = (e:React.FormEvent<HTMLFormElement>) => {
+  const submitSignIn = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    SignIn({ email, password });
+    signInAuth({ email, password });
   };
 
   return (

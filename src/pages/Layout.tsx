@@ -1,7 +1,10 @@
+import { Sidebar } from "../components/Sidebar"
 
 
 export const Layout = () => {
   return (
-    <div>Layout</div>
+    <>
+    <Sidebar/>
+    </>
   )
 }
