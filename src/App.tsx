@@ -4,7 +4,7 @@ import { supabaseClient } from "./providers/supabaseClient";
 import { Layout } from "./pages/Layout";
 
 export const App = () => {
-  const [session, setSession] = useState();
+  // const [session, setSession] = useState();
   const [ user, setUser ] = useState();
 
   // useEffect(() => {
@@ -24,7 +24,7 @@ export const App = () => {
       if (error){
         throw error;
       }
-      setUser(data.session?.user || null)
+      setUser(data.session?.user)
       console.log(data.session);
     }
     getSession();
