@@ -5,23 +5,37 @@ import { Layout } from "./pages/Layout";
 
 export const App = () => {
   const [session, setSession] = useState();
+  const [ user, setUser ] = useState();
+
+  // useEffect(() => {
+  //   supabaseClient.auth.getSession().then(({ data: { session } }) => {
+  //     setSession(session);
+  //   });
+  //   const { data: { subscription } } = supabaseClient.auth.onAuthStateChange((_event, session) => {
+  //     setSession(session);
+  //   });
+  //
+  //   return () => subscription.unsubscribe();
+  // }, []);
 
   useEffect(() => {
-    
-    supabaseClient.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
+    const getSession = async ()=>{
+      const {data, error} = await supabaseClient.auth.getSession();
+      if (error){
+        throw error;
+      }
+      setUser(data.session?.user || null)
+      console.log(data.session);
+    }
+    getSession();
 
     const { data: { subscription } } = supabaseClient.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
+          setUser(session);
+        });
 
-    return () => subscription.unsubscribe();
+        return () => subscription.unsubscribe();
+
   }, []);
 
-  useEffect(() => {
-    console.log(session);
-  });
-
-  return session ? <Layout /> : <Auth />;
+  return user ? <Layout /> : <Auth />;
 };

@@ -1,4 +1,10 @@
+import {supabaseClient} from "../providers/supabaseClient.ts";
+
 export const Sidebar = () => {
+
+  const logout = async () => {
+    await supabaseClient.auth.signOut();
+  }
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
@@ -93,9 +99,7 @@ export const Sidebar = () => {
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <a className="dropdown-item" href="#">
-              Sign out
-            </a>
+            <button className='dropdown-item' onClick={logout}>Sign out</button>
           </li>
         </ul>
       </div>
