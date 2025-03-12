@@ -1,8 +1,8 @@
-import React from 'react';
+
 
 const Orders = () => {
     return (
-        <div>
+        <div className="container">
             <h1>Orders</h1>
         </div>
     );

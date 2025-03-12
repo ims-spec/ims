@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Auth } from "./auth/Auth";
 import { supabaseClient } from "./providers/supabaseClient";
 import { Layout } from "./pages/Layout";
+import { CustomRoutes } from "./providers/customRoutes";
 
 export const App = () => {
   // const [session, setSession] = useState();
@@ -37,5 +38,5 @@ export const App = () => {
 
   }, []);
 
-  return user ? <Layout /> : <Auth />;
+  return user ? <CustomRoutes /> : <Auth />;
 };

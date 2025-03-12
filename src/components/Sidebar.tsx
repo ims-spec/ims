@@ -1,16 +1,15 @@
-import {supabaseClient} from "../providers/supabaseClient.ts";
-import {Link} from "react-router-dom";
+import { supabaseClient } from "../providers/supabaseClient.ts";
+import { Link, NavLink } from "react-router-dom";
 export const Sidebar = () => {
-
   const logout = async () => {
     await supabaseClient.auth.signOut();
-  }
+  };
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
-      style={{ maxWidth: "20vw", height:"100vh" }}
+      style={{ maxWidth: "20vw", height: "100vh" }}
     >
-      <Link
+      <NavLink
         to="/"
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
@@ -18,54 +17,38 @@ export const Sidebar = () => {
           <use xlinkHref="#bootstrap"></use>
         </svg>
         <span className="fs-4">Dashboard</span>
-      </Link>
+      </NavLink>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item">
-          <a href="#" className="nav-link active" aria-current="page">
+          <NavLink to="/orders" className="nav-link text-white" aria-current="page">
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#home"></use>
             </svg>
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="#" className="nav-link text-white">
-            <svg className="bi pe-none me-2" width="16" height="16">
-              <use xlinkHref="#speedometer2"></use>
-            </svg>
-            Dashboard
-          </a>
-        </li>
-        <li>
-          <a href="/orders" className="nav-link text-white">
-            <svg className="bi pe-none me-2" width="16" height="16">
-              <use xlinkHref="#table"></use>
-            </svg>
             Orders
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="#" className="nav-link text-white">
+          <NavLink to="/audit" className="nav-link text-white">
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#grid"></use>
             </svg>
-            Products
-          </a>
+            Audit
+          </NavLink>
         </li>
         <li>
-          <a href="#" className="nav-link text-white">
+          <NavLink to="/" className="nav-link text-white">
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#people-circle"></use>
             </svg>
             Customers
-          </a>
+          </NavLink>
         </li>
       </ul>
       <hr />
       <div className="dropdown">
-        <a
-          href="#"
+        <Link
+          to="/"
           className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -78,28 +61,30 @@ export const Sidebar = () => {
             className="rounded-circle me-2"
           />
           <strong>mdo</strong>
-        </a>
+        </Link>
         <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
           <li>
-            <a className="dropdown-item" href="#">
+            <Link className="dropdown-item" to="/">
               New project...
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="dropdown-item" href="#">
+            <Link className="dropdown-item" to="">
               Settings
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="dropdown-item" href="#">
+            <Link className="dropdown-item" to="/">
               Profile
-            </a>
+            </Link>
           </li>
           <li>
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <button className='dropdown-item' onClick={logout}>Sign out</button>
+            <button className="dropdown-item" onClick={logout}>
+              Sign out
+            </button>
           </li>
         </ul>
       </div>

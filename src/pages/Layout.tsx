@@ -1,13 +1,12 @@
-import {Sidebar} from "../components/Sidebar"
-import {Outlet} from "react-router";
-
+import { Sidebar } from "../components/Sidebar";
+import { Outlet } from "react-router-dom";
 
 export const Layout = () => {
-    return (
-        <div className="d-flex justify-content-between">
-            <Sidebar/>
-            <h1>Outlet нужно вспомнить!</h1>
-            <Outlet/>
-        </div>
-    )
-}
+  return (
+    <div className="d-flex justify-content-between">
+      <Sidebar />
+      {/* <h1>Outlet нужно вспомнить!</h1> */}
+      <Outlet />
+    </div>
+  );
+};
