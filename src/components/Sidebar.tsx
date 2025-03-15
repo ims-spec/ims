@@ -29,6 +29,25 @@ export const Sidebar = () => {
                         Orders
                     </NavLink>
                 </li>
+
+                <li className="nav-item">
+                    <NavLink to="/admin" className="nav-link text-white" aria-current="page">
+                        <svg className="bi pe-none me-2" width="16" height="16">
+                            <use xlinkHref="#home"></use>
+                        </svg>
+                        Admin panel
+                    </NavLink>
+                </li>
+
+                <li className="nav-item">
+                    <NavLink to="/profile" className="nav-link text-white" aria-current="page">
+                        <svg className="bi pe-none me-2" width="16" height="16">
+                            <use xlinkHref="#home"></use>
+                        </svg>
+                        User profile
+                    </NavLink>
+                </li>
+
                 <li>
                     <NavLink to="/audit" className="nav-link text-white">
                         <svg className="bi pe-none me-2" width="16" height="16">

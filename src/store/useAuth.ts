@@ -1,13 +1,17 @@
 import {create} from "zustand";
 
-import {supabaseClient} from "../providers/supabaseClient";
+import {supabaseClient} from "../providers/supabaseClient.ts";
 
+interface IAuth {
+    email: string,
+    password: string,
+}
 
 export const useAuth = create((set) => ({
     session: null,
     user: null,
     loading: false,
-    signInAuth: async ({email, password}: { email: string, password: string }) => {
+    signInAuth: async ({email, password}: IAuth) => {
         const {data, error} = await supabaseClient.auth.signInWithPassword({
             email: email,
             password: password,
@@ -19,7 +23,7 @@ export const useAuth = create((set) => ({
         set({data, loading: false});
         return data
     },
-    signUpAuth: async ({email, password}: { email: string, password: string }) => {
+    signUpAuth: async ({email, password}: IAuth) => {
         const {data, error} = await supabaseClient.auth.signUp({
             email: email,
             password: password,
