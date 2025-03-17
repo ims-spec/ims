@@ -1,11 +1,11 @@
-import {Sidebar} from "../../components/Sidebar.tsx";
 import {Outlet} from "react-router-dom";
+import {Sidebar} from "../../components/Sidebar.tsx";
 
 
-const AdminLayout = () => {
+const AdminLayout = ({role}:{role:string}) => {
     return (
         <div className="d-flex justify-content-between">
-            <Sidebar />
+            <Sidebar userRole={role } />
             <Outlet />
         </div>
     );

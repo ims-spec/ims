@@ -3,11 +3,14 @@ import {supabaseClient} from "./providers/supabaseClient.ts";
 import {User} from "@supabase/supabase-js";
 
 // import {Layout} from "./pages/Layout";
-import { CustomRoutes } from "./providers/customRoutes";
+// import { CustomRoutes } from "./providers/customRoutes";
+// import { MainRoutes } from "./providers/MainRoutes.tsx";
+import { SomeRoutes } from "./providers/SomeRoutes.tsx";
 import {Auth} from "./auth/Auth";
 
 //css
 import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 export const App = () => {
 
@@ -29,7 +32,9 @@ export const App = () => {
         return () => subscription.unsubscribe();
     }, []);
 
-    return user ? <CustomRoutes userRole={'profile'}/> : <Auth />;
+    // return user ? <CustomRoutes userRole={'admin'}/> : <Auth />;
+    return user ? <SomeRoutes userRole={'admin'}/> : <Auth />;
+    // return user ? <MainRoutes userRole={'user'}/> : <Auth />;
 
 
 

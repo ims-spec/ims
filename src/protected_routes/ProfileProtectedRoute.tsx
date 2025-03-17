@@ -1,17 +1,14 @@
-import React from 'react'
+import { Navigate, Outlet } from "react-router-dom";
+import { IProtectedProps } from "../types";
 
-import {Navigate} from "react-router-dom";
+const ProfileProtectedRoute = ({
+  role,
+  redirectPath = "/",
+  children,
+}: IProtectedProps) => {
+  if (role !== "profile") return <Navigate to={redirectPath} replace />;
 
-interface IProps {
-    role?: string;
-    redirectPath?: string;
-    children: React.ReactNode;
-}
-
-const ProfileProtectedRoute = ({role, redirectPath = '/', children}: IProps) => {
-    if (role !=='profile') return <Navigate to={redirectPath} replace/>;
-
-    return children;
+  return children ? children : <Outlet />;
 };
 
 export default ProfileProtectedRoute;
