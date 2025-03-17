@@ -7,7 +7,7 @@ export const NotFound = ({ role }: { role: string }) => {
   useEffect(() => {
     if (role === "admin") setUrl("/admin");
     if (role === "profile") setUrl("/profile");
-    if (role === "user") setUrl("/user");
+    if (role === "user") setUrl("/");
   }, [role]);
 
   return (

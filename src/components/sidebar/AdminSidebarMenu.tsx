@@ -5,7 +5,7 @@ export const AdminSidebarMenu = () => {
     <ul className="nav nav-pills flex-column mb-auto">
       <li className="nav-item">
         <Link
-          to="/admin/dashboard"
+          to="/admin"
           className="nav-link text-white gap-3"
           aria-current="page"
         >

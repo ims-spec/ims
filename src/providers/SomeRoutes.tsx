@@ -13,7 +13,11 @@ import ProfileProtectedRoute from "../protected_routes/ProfileProtectedRoute";
 import { ProfileDashboard } from "../pages/profile/ProfileDashboard";
 import { ProfileSettings } from "../pages/profile/ProfileSettings";
 
+//user
+import { UserLayout } from "../pages/user/UserLayout";
+import { UserDashboard } from "../pages/user/UserDashboard";
 import { NotFound } from "../pages/NotFound";
+import { UserProtectedRoute } from "../protected_routes/UserProtectedRoute";
 
 export const SomeRoutes = ({ userRole }: { userRole: string }) => {
   if (userRole === "admin")
@@ -27,10 +31,7 @@ export const SomeRoutes = ({ userRole }: { userRole: string }) => {
             </AdminProtectedRoute>
           }
         >
-          <Route
-            path="dashboard"
-            element={<AdminDashboard role={userRole} />}
-          />
+          <Route index element={<AdminDashboard role={userRole} />} />
           <Route path="users" element={<AdminUsers />} />
           <Route path="settings" element={<AdminSettings />} />
         </Route>
@@ -49,7 +50,7 @@ export const SomeRoutes = ({ userRole }: { userRole: string }) => {
             </ProfileProtectedRoute>
           }
         >
-          <Route path="dashboard" element={<ProfileDashboard />} />
+          <Route index element={<ProfileDashboard />} />
           <Route path="settings" element={<ProfileSettings />} />
         </Route>
         <Route path="*" element={<NotFound role={userRole} />} />
@@ -60,15 +61,14 @@ export const SomeRoutes = ({ userRole }: { userRole: string }) => {
     return (
       <Routes>
         <Route
-          path="/user"
+          path="/"
           element={
-            <ProfileProtectedRoute role={userRole} redirectPath="*">
-              <ProfileLayout role={userRole} />
-            </ProfileProtectedRoute>
+            <UserProtectedRoute role={userRole} redirectPath="*">
+              <UserLayout role={userRole} />
+            </UserProtectedRoute>
           }
         >
-          <Route path="dashboard" element={<ProfileDashboard />} />
-          <Route path="settings" element={<ProfileSettings />} />
+          <Route index element={<UserDashboard />} />
         </Route>
         <Route path="*" element={<NotFound role={userRole} />} />
       </Routes>
