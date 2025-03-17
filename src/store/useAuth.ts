@@ -1,5 +1,6 @@
 import {create} from "zustand";
 
+
 import {supabaseClient} from "../providers/supabaseClient.ts";
 
  interface IAuth{
@@ -34,5 +35,13 @@ export const useAuth = create((set) => ({
         }
 
         set({data, loading: false});
+    },
+    getSession: async ()=> {
+        const {data, error} = await supabaseClient.auth.getSession();
+        if (error) {
+            throw error;
+        }
+        set({session: data.session});
+        set({user:data.session.user});
     },
 }));
