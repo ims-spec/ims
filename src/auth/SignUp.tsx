@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {ChildComponentProps} from "./Auth";
 import {ConditionsBlock} from "../components/forAuth/ConditionsBlock";
 import {useAuth} from "../store/useAuth";
+
 export const SignUp: React.FC<ChildComponentProps> = ({
                                                           isLogin,
                                                           setIsLogin,
@@ -43,7 +44,7 @@ export const SignUp: React.FC<ChildComponentProps> = ({
             return setErrorMessage("Пароли не совпадают!");
         }
 
-        signUpAuth({email:email, password:inpPassword})
+        signUpAuth({email: email, password: inpPassword})
 
     };
 

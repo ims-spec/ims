@@ -2,13 +2,12 @@ import {JSX} from "react";
 
 interface ICheck {
     isLength: boolean;
-    isChecked2?: boolean;
-    isChecked3?: boolean;
     hasUppercase: boolean;
+    hasNumber: boolean
 }
 
 
-export const ConditionsBlock:ICheck = ({ isLength, hasUppercase, hasNumber  }):JSX.Element => {
+export const ConditionsBlock = ({ isLength, hasUppercase, hasNumber  }: ICheck):JSX.Element => {
   // useEffect(() => {
 
   //   setIsChecked1(true)
