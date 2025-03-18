@@ -13,6 +13,7 @@ export const UserDashboard = () => {
             if (session) {
                 setUser(session.user);
                 setRole(session.user.app_metadata?.role);
+                console.log(session.user.app_metadata.role)
             }
         };
 

@@ -41,7 +41,6 @@ export const useAuth = create((set) => ({
         if (error) {
             throw error;
         }
-        set({session: data.session});
-        set({user:data.session.user});
+        set({session: data.session});        
     },
 }));
