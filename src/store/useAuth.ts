@@ -1,46 +1,80 @@
-import {create} from "zustand";
+import { create } from "zustand";
 
+import { supabaseClient } from "../providers/supabaseClient.ts";
+import { IAuthState } from "../types.ts";
 
-import {supabaseClient} from "../providers/supabaseClient.ts";
+export const useAuth = create<IAuthState>((set) => ({
+  session: null,
+  user: null,
+  role: null,
+  loading: false,
+  error: null,
+  signInAuth: async ({ email, password }) => {
+    set({ loading: true });
 
- interface IAuth{
-    email: string,
-    password: string,
-}
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
 
-export const useAuth = create((set) => ({
-    session: null,
-    user: null,
-    loading: false,
-    signInAuth: async ({email, password}: IAuth): Promise<void> => {
-        const {data, error} = await supabaseClient.auth.signInWithPassword({
-            email: email,
-            password: password,
-        });
+    if (error) {
+      set({ loading: false });
+      throw error;
+    }
+    set({
+      session: data.session,
+      user: data.session?.user,
+      role: data.session?.user.app_metadata?.role,
+      loading: false,
+    });
+  },
 
-        if (error) {
-            throw error;
-        }
-        set({data, loading: false});
-        // return data
-    },
-    signUpAuth: async ({email, password}: IAuth): Promise<void> => {
-        const {data, error} = await supabaseClient.auth.signUp({
-            email: email,
-            password: password,
-        });
+  signUpAuth: async ({ email, password }) => {
+    set({ loading: true });
 
-        if (error) {
-            throw error;
-        }
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: email,
+      password: password,
+    });
 
-        set({data, loading: false});
-    },
-    getSession: async ()=> {
-        const {data, error} = await supabaseClient.auth.getSession();
-        if (error) {
-            throw error;
-        }
-        set({session: data.session});        
-    },
+    if (error) {
+      set({ error: error.message, loading: false });
+    }
+
+    set({
+      session: data.session,
+      user: data.session?.user,
+      role: data.session?.user.app_metadata?.role,
+      loading: false,
+    });
+  },
+  getSession: async () => {
+    set({ loading: true });
+
+    const { data, error } = await supabaseClient.auth.getSession();
+    if (error) {
+      set({ error: error.message, loading: false });
+      throw error;
+    }
+    set({
+      session: data.session,
+      user: data.session?.user,
+      role: data.session?.user.app_metadata?.role,
+      loading: false,
+    });
+  },
+  getAllUsers: async () => {
+    set({ loading: true });
+
+    const { data, error } = await supabaseClient
+      .schema("auth")
+      .from("users")
+      .select();
+
+    if (error) {
+      set({ error: error.message, loading: false });
+    }
+
+    console.log(data);
+  },
 }));

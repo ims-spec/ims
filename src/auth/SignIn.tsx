@@ -8,7 +8,7 @@ export const SignIn: React.FC<ChildComponentProps> = ({
                                                       }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {signInAuth} = useAuth();
+    const {signInAuth, error} = useAuth();
 
     const submitSignIn = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -20,7 +20,7 @@ export const SignIn: React.FC<ChildComponentProps> = ({
             <main className="form-signin w-25 m-auto shadow-lg p-5">
                 <form onSubmit={submitSignIn}>
                     <h1 className="h3 mt-5 mb-3 fw-normal">Please sign in</h1>
-
+                    {error && <p>{error}</p>}
                     <div className="form-floating">
                         <input
                             type="email"
