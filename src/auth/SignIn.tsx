@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {ChildComponentProps} from "./Auth";
 import {useAuth} from "../store/useAuth";
+import {useNavigate} from "react-router-dom";
 
 export const SignIn: React.FC<ChildComponentProps> = ({
                                                           isLogin,
@@ -9,10 +10,15 @@ export const SignIn: React.FC<ChildComponentProps> = ({
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const {signInAuth, error} = useAuth();
+    const navigate = useNavigate();
 
     const submitSignIn = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        signInAuth({email, password});
+        const handleLogin = async () => {
+           await signInAuth({email, password});
+           if(signInAuth) navigate('/admin');
+        }
+        handleLogin();
     };
 
     return (
