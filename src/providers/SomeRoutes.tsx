@@ -19,6 +19,7 @@ import { AdminSettings } from "../pages/admin/AdminSettings";
 // import { UserProtectedRoute } from "../protected_routes/UserProtectedRoute";
 
 import { NotFound } from "../pages/NotFound";
+import { GoalsLayout } from "@/pages/goals/GoalsLayout";
 
 export const SomeRoutes = ({ userRole }: { userRole: string }) => {
   if (userRole === "admin")
@@ -34,6 +35,7 @@ export const SomeRoutes = ({ userRole }: { userRole: string }) => {
         >
           <Route index element={<AdminDashboard role={userRole} />} />
           <Route path="users" element={<AdminUsers />} />
+          <Route path="goals" element={<GoalsLayout />} />
           <Route path="settings" element={<AdminSettings />} />
         </Route>
         <Route path="*" element={<NotFound role={userRole} />} />

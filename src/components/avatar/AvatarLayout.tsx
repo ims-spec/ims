@@ -63,7 +63,7 @@ export const AvatarLayout: React.FC<IAvatar> = ({ src, size }) => {
               <hr />
             </li>
             <li className="text-center mt-3 ">
-              <button className="btn btn-link fs-5" onClick={logout}>
+              <button className="btn btn-link fs-5" onClick={logout} style={{textDecoration:'none', color:'black',}}>
                 Logout
               </button>
             </li>

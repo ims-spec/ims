@@ -1,4 +1,4 @@
-import { Sidebar } from "../components/sidebar/Sidebar.tsx";
+import { Sidebar } from "@/components/custom/sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 
 
