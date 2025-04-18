@@ -23,7 +23,7 @@ export const useStore = create<IStore>((set)=>({
     loading:false,
     getAuthors: async()=>{
         set({loading:true})
-        const {data, error} = await supabaseClient.from('authors').select()
+        const {data, error} = await supabaseClient.from('authors_example').select()
         if(error) {
             set({error: error.message, loading:false})            
         }

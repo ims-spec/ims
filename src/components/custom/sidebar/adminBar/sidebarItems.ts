@@ -50,6 +50,21 @@ export const menuItems: IAdminMenuItem[] = [
         id: '4',
         liClassName: 'nav-item',
         link: {
+            to: '/admin/divisions',
+            className: 'nav-link text-dark gap-3'
+        },
+        inLink: {
+            iconClassName: 'bi bi-person-circle p-2 g-col-6',
+            spanClassName:
+                'p-2 g-col-6',
+            spanText:
+                'Divisions'
+        }
+    },
+    {
+        id: '5',
+        liClassName: 'nav-item',
+        link: {
             to: '/admin/settings',
             className: 'nav-link text-dark gap-3'
         },

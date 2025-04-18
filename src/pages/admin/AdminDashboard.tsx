@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabaseClient } from "@/providers/supabaseClient.ts";
 import CardLayout from "@/components/cards/CardLayout.tsx";
-import { AvatarLayout } from "@/components/avatar/AvatarLayout";
-
 interface IBooks {
   id: number;
   book: string;
@@ -17,7 +15,7 @@ export const AdminDashboard = ({ role }: { role: string }) => {
       await supabaseClient.auth.refreshSession();
     };
     const getBooks = async () => {
-      const { data, error } = await supabaseClient.from("books").select();
+      const { data, error } = await supabaseClient.from("books_example").select();
       if (error) throw error;
 
       setBooks(data);
@@ -40,31 +38,7 @@ export const AdminDashboard = ({ role }: { role: string }) => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <div className="shadow-lg d-flex justify-content-between ">
-            <div className="hstack gap3">
-              <div className="p-3">
-                <input type="text" />
-              </div>
-              <div className="p-3">
-                <button type="button" className="btn btn-primary">
-                  Click
-                </button>
-              </div>
-            </div>
-
-            <div className="hstack" style={{marginRight: "15px"}}>
-              <AvatarLayout
-                src="https://steamuserimages-a.akamaihd.net/ugc/2100422066956953334/BCFFD0DB0C56F71CD288304540E39FC2FADFD155/?imw=512&amp;imh=341&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true"
-                alt="hello"
-                size={50}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="container">      
       <div className="row">
         <CardLayout />
       </div>
@@ -80,6 +54,107 @@ export const AdminDashboard = ({ role }: { role: string }) => {
           </li>
         ))}
       </ul>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <div>
+              <p>Author: {book.author_id}</p>
+              <p>Book name: {book.book}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <div>
+              <p>Author: {book.author_id}</p>
+              <p>Book name: {book.book}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <div>
+              <p>Author: {book.author_id}</p>
+              <p>Book name: {book.book}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <div>
+              <p>Author: {book.author_id}</p>
+              <p>Book name: {book.book}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <div>
+              <p>Author: {book.author_id}</p>
+              <p>Book name: {book.book}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <div>
+              <p>Author: {book.author_id}</p>
+              <p>Book name: {book.book}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <div>
+              <p>Author: {book.author_id}</p>
+              <p>Book name: {book.book}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <div>
+              <p>Author: {book.author_id}</p>
+              <p>Book name: {book.book}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <div>
+              <p>Author: {book.author_id}</p>
+              <p>Book name: {book.book}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            <div>
+              <p>Author: {book.author_id}</p>
+              <p>Book name: {book.book}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      
     </div>
   );
 };
